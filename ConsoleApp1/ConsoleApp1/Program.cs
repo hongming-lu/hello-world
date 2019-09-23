@@ -79,6 +79,30 @@ namespace Worx.ProCsharp.JupiterBank
         {
             balance += amount;
         }
-        public bool Withdraw(decimal amoun）
+        public bool Withdraw(decimal amount)
+           {
+            if (balance >= amount)
             {
+                balance -= amount;
+                return true;
+            }
+            Console.WriteLine("withdrawal attempt failed.");
+            return false;
         }
+        public decimal Balance
+        {
+            get
+            {
+                return balance;
+            }
+        }
+
+        decimal IBankAccount.Balance => throw new NotImplementedException();
+
+        public override string ToString()
+        {
+            return string.Format("Venus Bank Saver:Balance=(0.6:C", balance);
+        }
+
+    }
+}
